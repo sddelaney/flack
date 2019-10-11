@@ -1,0 +1,50 @@
+/*Position and style for the sidebar*/ 
+    
+.sidebar { 
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    /*Stays in place */ 
+    background-color: rgb(58, 169, 221); 
+    /*green*/ 
+    overflow-x: hidden; 
+    /*for Disabling horizontal scroll */ 
+} 
+/* Position and style for the sidebar links */ 
+    
+.sidebar a { 
+    padding: 10px 10px 10px; 
+    font-size: 25px; 
+    color: #111; 
+    display: block; 
+    transition: 0.3s; 
+} 
+/* the links change color when mouse hovers upon them*/ 
+    
+.sidebar a:hover { 
+    color: #FFFFFF; 
+} 
+/* Position and style the for cross button */ 
+    
+    
+.openbtn { 
+    font-size: 28px; 
+    background-color: rgb(58, 169, 221); 
+    color: #111; 
+    padding: 10px 10px 10px; 
+    border: none; 
+} 
+/* the sidebar button changes  
+color when mouse hovers upon it */ 
+.openbtn:hover { 
+    color: #FFFFFF; 
+} 
+
+/* pushes the page content to the right 
+when you open the side navigation */ 
+    
+#main { 
+    transition: margin-left .5s; 
+    /* If you want a transition effect */ 
+    padding: 10px; 
+} 
