@@ -1,0 +1,4 @@
+templates/.DS_Store
+.DS_Store
+flask_session/*
+__pycache__/*
