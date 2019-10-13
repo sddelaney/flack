@@ -7,39 +7,18 @@
 {% block main %}
 <div id="bottom-up">
     <ul class="list-group list-group-mine list-group-flush">
-
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li> 
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>  
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>  
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>  
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>  
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item list-group-item-dark">test123</li>   
-        <li class="list-group-item list-group-item-dark">test</li>        
-        <li class="list-group-item">test123</li>   
-        <li class="list-group-item">test</li>  
+        {% for item in items %}
+            <li class="list-group-item">{{item}}</li>  
+        {% endfor %}      
+ 
     </ul>
 
 
-    <form action="/" method="post">
+    <form action="/" data-channel="engineering" method="post">
         <div class="input-group my-input-group input-group-lg mb-3">
-            <input type="text" class="form-control" placeholder="Input Text" aria-label="inp-text" aria-describedby="basic-addon2">
+            <input type="text" id="sendtext" autofocus class="form-control" placeholder="Input Text" aria-label="inp-text" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Send</button>
+              <button class="btn btn-outline-secondary" type="submit">Send</button>
             </div>
           </div>
     </form>
