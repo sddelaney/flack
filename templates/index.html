@@ -5,10 +5,43 @@
 {% endblock %}
 
 {% block main %}
+<div id="bottom-up">
+    <ul class="list-group list-group-mine list-group-flush">
+
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li> 
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>  
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>  
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>  
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>  
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item list-group-item-dark">test123</li>   
+        <li class="list-group-item list-group-item-dark">test</li>        
+        <li class="list-group-item">test123</li>   
+        <li class="list-group-item">test</li>  
+    </ul>
+
+
     <form action="/" method="post">
-        <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="inp" placeholder="Input Text" type="text">
-        </div>
-        <button class="btn btn-primary" type="submit">Send</button>
+        <div class="input-group my-input-group input-group-lg mb-3">
+            <input type="text" class="form-control" placeholder="Input Text" aria-label="inp-text" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Send</button>
+            </div>
+          </div>
     </form>
+</div>
 {% endblock %}
