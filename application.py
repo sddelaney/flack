@@ -26,7 +26,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-txt = {"engineering": ['test']}
+txt = {"engineering": ['Start of messages in this channel']}
+active_users = []
 
 @app.route("/", methods=["GET", "POST"])
 @login_required
@@ -47,10 +48,15 @@ def register():
 
     else:
         session["name"] = request.form.get("register")
+        if session["name"] in active_users:
+            return apology("username taken", 400)
+        else:    
+            active_users.append(session["name"])
         return redirect("/")
 
 
 @socketio.on("submit text")
 def vote(data):
+    data["info"] = session["name"] + " " + data["info"]
     txt[data["channel"]].append(data["info"])
     emit("channel text", data, broadcast=True)

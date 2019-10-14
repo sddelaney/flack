@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
        // Each button should emit a "submit vote" event
        document.querySelectorAll('form').forEach(form => {
            form.onsubmit = () => {
-               console.log("hi")
+                var today = new Date();
                const channel = form.dataset.channel;
-               const info = form.querySelector('#sendtext').value;
+               const info = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+                            + " # " + form.querySelector('#sendtext').value;
                socket.emit('submit text', {'channel': channel, 'info': info});
            };
        });
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // When a new vote is announced, add to the unordered list
    socket.on('channel text', data => {
-       document.querySelector('.list-group-mine').innerHTML += '<li class="list-group-item">' + data["info"] + '</li>'
+       document.querySelector('.list-group-mine').innerHTML += '<li class="list-group-item">' + data["info"] + 
+                                                                 '</li>'
        var objDiv = document.getElementById("bottom-up");
        objDiv.scrollTop = objDiv.scrollHeight;
    });
