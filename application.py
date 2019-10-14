@@ -26,19 +26,35 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-txt = {"engineering": ['Start of messages in this channel']}
+txt = {"General": ['Start of messages in this channel'],
+       "Engineering": ['Start of messages in this channel'],
+       "Support": ['Start of messages in this channel']}
 active_users = []
 
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    if request.method == "GET":
-        return render_template('index.html', items=txt["engineering"])
+    print(txt.keys())
+    return render_template('index.html', items=txt["General"], channel="General", channels=txt.keys())
+
+@app.route("/<string:channel>", methods=["GET", "POST"])
+@login_required
+def channel(channel):
+    if channel in txt:
+        return render_template('index.html', items=txt[channel], channel=channel, channels=txt.keys())
     else:
-        #add li to page
-        return render_template('index.html', items=txt["engineering"])
+        return apology("no channel by that name", 404)
 
 
+@app.route("/add/", methods=["POST"])
+@login_required
+def add():
+    channel = request.form.get("addchannel")
+    if channel in txt:
+        return apology("channel already exists", 400)
+    else:
+        txt[channel] = ["Start of messages in this channel"]
+        return render_template('index.html', items=txt[channel], channel=channel, channels=txt.keys())
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -52,7 +68,7 @@ def register():
             return apology("username taken", 400)
         else:    
             active_users.append(session["name"])
-        return redirect("/")
+            return redirect("/")
 
 
 @socketio.on("submit text")

@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
        // Each button should emit a "submit vote" event
        document.querySelectorAll('form').forEach(form => {
            form.onsubmit = () => {
-                var today = new Date();
+               var today = new Date();
+               console.log("here");
                const channel = form.dataset.channel;
                const info = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
                             + " # " + form.querySelector('#sendtext').value;
