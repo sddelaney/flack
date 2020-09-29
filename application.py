@@ -34,7 +34,6 @@ active_users = []
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    print(txt.keys())
     return render_template('index.html', items=txt["General"], channel="General", channels=txt.keys())
 
 @app.route("/<string:channel>", methods=["GET", "POST"])
@@ -43,7 +42,7 @@ def channel(channel):
     if channel in txt:
         return render_template('index.html', items=txt[channel], channel=channel, channels=txt.keys())
     else:
-        return apology("no channel by that name", 404)
+        return apology("no channel by that name {}".format(channel), 404)
 
 
 @app.route("/add/", methods=["POST"])
@@ -68,7 +67,7 @@ def register():
             return apology("username taken", 400)
         else:    
             active_users.append(session["name"])
-            return redirect("/")
+            return index()
 
 
 @socketio.on("submit text")
@@ -76,3 +75,14 @@ def vote(data):
     data["info"] = session["name"] + " " + data["info"]
     txt[data["channel"]].append(data["info"])
     emit("channel text", data, broadcast=True)
+
+
+@app.route("/redirect/<string:channel>", methods=["GET"])
+@login_required
+def redirect(channel):
+    print(channel)
+    if channel in txt:
+        print("yay")
+        return render_template('index.html', items=txt[channel], channel=channel, channels=txt.keys())
+    else:
+        return apology("no channel by that name -- {}".format(channel), 404)
